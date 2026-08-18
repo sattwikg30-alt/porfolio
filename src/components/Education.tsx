@@ -425,16 +425,6 @@ export default function Education() {
                     title: "Blockchain Track",
                     desc: "Hands-on exposure to distributed ledger architecture, smart contracts, and decentralized systems.",
                   },
-                  {
-                    icon: "📡",
-                    title: "IoT Systems",
-                    desc: "Embedded systems, sensor networks, and edge computing within the IOTCS curriculum.",
-                  },
-                  {
-                    icon: "🔨",
-                    title: "Learning by Doing",
-                    desc: "Applying classroom knowledge through hackathons, projects, and real-world problem solving.",
-                  },
                 ].map((item) => {
                   return <InfoCard key={item.title} {...item} />;
                 })}
