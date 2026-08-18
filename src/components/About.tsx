@@ -25,7 +25,7 @@ function Reveal({
     const reduced =
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduced) {
-      setVisible(true);
+      setTimeout(() => setVisible(true), 0);
       return;
     }
 
@@ -90,16 +90,7 @@ interface Block {
 }
 
 const BLOCKS: Block[] = [
-  {
-    num: "01",
-    title: "Education",
-    variant: "text",
-    lines: [
-      "B.Tech — CSE",
-      "Heritage Institute",
-      "of Technology",
-    ],
-  },
+
   {
     num: "02",
     title: "What I Build",
@@ -184,14 +175,14 @@ function ProfileBlock({ item }: { item: Block }) {
           item.lines.map((line, i) => (
             <p
               key={i}
-              className="leading-snug transition-colors duration-300"
-              style={{
-                fontSize: i === 0 ? "1.05rem" : "0.85rem",
-                fontWeight: i === 0 ? 700 : 400,
-                color: i === 0 ? "#f0f0f0" : "#888899",
-                marginBottom: i < item.lines.length - 1 ? "0.3rem" : 0,
-              }}
-            >
+                className="leading-snug transition-colors duration-300"
+                style={{
+                  fontSize: i === 0 ? "1.25rem" : "1.05rem",
+                  fontWeight: i === 0 ? 700 : 400,
+                  color: i === 0 ? "#f0f0f0" : "#888899",
+                  marginBottom: i < item.lines.length - 1 ? "0.4rem" : 0,
+                }}
+              >
               {line}
             </p>
           ))}
@@ -200,19 +191,19 @@ function ProfileBlock({ item }: { item: Block }) {
           <div className="flex flex-col gap-2.5">
             {item.lines.map((line, i) => (
               <div key={i} className="flex items-center gap-2.5 group/label">
-                <div
-                  className="w-1 h-1 rounded-full flex-shrink-0 transition-all duration-300"
-                  style={{
-                    background: hover ? "#00d4ff" : "rgba(255,255,255,0.2)",
-                    boxShadow: hover ? "0 0 6px rgba(0,212,255,0.5)" : "none",
-                  }}
-                />
-                <span
-                  className="text-[11px] font-bold tracking-[0.18em] uppercase transition-colors duration-300"
-                  style={{ color: hover ? "#f0f0f0" : "#aaaabb" }}
-                >
-                  {line}
-                </span>
+                  <div
+                    className="w-1.5 h-1.5 rounded-full flex-shrink-0 transition-all duration-300"
+                    style={{
+                      background: hover ? "#00d4ff" : "rgba(255,255,255,0.2)",
+                      boxShadow: hover ? "0 0 6px rgba(0,212,255,0.5)" : "none",
+                    }}
+                  />
+                  <span
+                    className="text-[13px] font-bold tracking-[0.18em] uppercase transition-colors duration-300"
+                    style={{ color: hover ? "#f0f0f0" : "#aaaabb" }}
+                  >
+                    {line}
+                  </span>
               </div>
             ))}
           </div>
@@ -222,20 +213,20 @@ function ProfileBlock({ item }: { item: Block }) {
           <div className="flex flex-wrap gap-x-2 gap-y-1">
             {item.lines.map((line, i) => (
               <React.Fragment key={i}>
-                <span
-                  className="text-[12px] font-semibold tracking-wide transition-colors duration-200"
-                  style={{ color: hover ? "#f0f0f0" : "#aaaabb" }}
-                >
-                  {line}
-                </span>
-                {i < item.lines.length - 1 && (
                   <span
-                    className="text-[12px] transition-colors duration-300"
-                    style={{ color: hover ? "rgba(0,212,255,0.5)" : "#333344" }}
+                    className="text-[14px] font-semibold tracking-wide transition-colors duration-200"
+                    style={{ color: hover ? "#f0f0f0" : "#aaaabb" }}
                   >
-                    /
+                    {line}
                   </span>
-                )}
+                  {i < item.lines.length - 1 && (
+                    <span
+                      className="text-[14px] transition-colors duration-300"
+                      style={{ color: hover ? "rgba(0,212,255,0.5)" : "#333344" }}
+                    >
+                      /
+                    </span>
+                  )}
               </React.Fragment>
             ))}
           </div>
@@ -245,12 +236,12 @@ function ProfileBlock({ item }: { item: Block }) {
           item.lines.map((line, i) => (
             <p
               key={i}
-              className="text-sm leading-relaxed transition-colors duration-300"
-              style={{
-                color: hover ? "#f0f0f0" : "#888899",
-                marginBottom: i < item.lines.length - 1 ? "0.4rem" : 0,
-              }}
-            >
+                className="text-base leading-relaxed transition-colors duration-300"
+                style={{
+                  color: hover ? "#f0f0f0" : "#888899",
+                  marginBottom: i < item.lines.length - 1 ? "0.5rem" : 0,
+                }}
+              >
               {line}
             </p>
           ))}
@@ -318,7 +309,7 @@ export default function About() {
         />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-24 md:py-32 lg:py-40">
+      <div className="relative z-10 w-full max-w-none px-6 md:px-12 lg:px-20 py-24 md:py-32 lg:py-40">
 
         {/* ======================================================== */}
         {/* TOP — asymmetric two-column intro                          */}
@@ -341,8 +332,8 @@ export default function About() {
                   style={{ background: "rgba(0,212,255,0.35)" }}
                 />
                 <span
-                  className="font-mono text-[10px] font-bold tracking-[0.35em] uppercase"
-                  style={{ color: "#888899" }}
+                  className="font-serif text-3xl sm:text-4xl font-bold tracking-widest uppercase"
+                  style={{ color: "#f0f0f0" }}
                 >
                   About Me
                 </span>
@@ -406,10 +397,11 @@ export default function About() {
               <p
                 className="leading-[1.85] font-light"
                 style={{
-                  fontSize: "clamp(1rem, 1.5vw, 1.2rem)",
+                  fontSize: "clamp(1.2rem, 2vw, 1.5rem)",
                   color: "#d4d4e0",
                 }}
               >
+                <span className="text-3xl font-bold text-white mb-2 block">Hi,</span>
                 I&apos;m a{" "}
                 <Kw>Computer Science student</Kw> and developer who enjoys
                 turning ideas into practical digital products. I work across{" "}
@@ -434,13 +426,13 @@ export default function About() {
                 ].map((item) => (
                   <div key={item.label} className="flex flex-col gap-0.5">
                     <span
-                      className="font-mono text-[9px] tracking-[0.25em] uppercase"
+                      className="font-mono text-[11px] tracking-[0.25em] uppercase"
                       style={{ color: "#555566" }}
                     >
                       {item.label}
                     </span>
                     <span
-                      className="text-[13px] font-semibold"
+                      className="text-[15px] font-semibold"
                       style={{ color: "#aaaacc" }}
                     >
                       {item.value}
@@ -457,7 +449,7 @@ export default function About() {
         {/* ======================================================== */}
         <Reveal delay={stagger[3]}>
           <div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mb-20 md:mb-28"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-20 md:mb-28"
             style={{
               border: "1px solid rgba(255,255,255,0.05)",
               gap: "1px",
@@ -479,52 +471,79 @@ export default function About() {
         {/* BOTTOM — personal statement                               */}
         {/* ======================================================== */}
         <Reveal delay={stagger[5]}>
-          <div className="max-w-5xl">
-            {/* Label */}
-            <div className="flex items-center gap-3 mb-8">
-              <span
-                className="font-mono text-[10px] font-bold tracking-[0.35em] uppercase"
-                style={{ color: "#00d4ff" }}
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20">
+            <div className="max-w-5xl">
+              {/* Label */}
+              <div className="flex items-center gap-3 mb-8">
+                <span
+                  className="font-mono text-[10px] font-bold tracking-[0.35em] uppercase"
+                  style={{ color: "#00d4ff" }}
+                >
+                  —
+                </span>
+                <span
+                  className="font-mono text-[10px] font-bold tracking-[0.35em] uppercase"
+                  style={{ color: "#555566" }}
+                >
+                  Philosophy
+                </span>
+              </div>
+
+              {/* Large personal statement */}
+              <p
+                className="font-bold tracking-tight leading-[1.1]"
+                style={{ fontSize: "clamp(1.8rem, 4.5vw, 3.5rem)", color: "#f0f0f0" }}
               >
-                —
-              </span>
-              <span
-                className="font-mono text-[10px] font-bold tracking-[0.35em] uppercase"
+                I like learning technologies{" "}
+                <br className="hidden sm:block" />
+                by{" "}
+                <span
+                  style={{
+                    background:
+                      "linear-gradient(120deg, #00d4ff 0%, #a855f7 100%)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                  }}
+                >
+                  building things
+                </span>{" "}
+                with them.
+              </p>
+
+              {/* Small sub-note */}
+              <p
+                className="mt-6 text-sm font-light leading-relaxed max-w-md"
                 style={{ color: "#555566" }}
               >
-                Philosophy
-              </span>
+                Not just studying concepts &mdash; actually shipping them. That&apos;s
+                how I learn what works.
+              </p>
             </div>
 
-            {/* Large personal statement */}
-            <p
-              className="font-bold tracking-tight leading-[1.1]"
-              style={{ fontSize: "clamp(1.8rem, 4.5vw, 3.5rem)", color: "#f0f0f0" }}
+            {/* Image Placeholder */}
+            <div 
+              className="relative w-[280px] h-[280px] sm:w-[340px] sm:h-[340px] shrink-0 flex items-center justify-center overflow-hidden"
+              style={{
+                background: "rgba(255,255,255,0.03)",
+                border: "1px solid rgba(255,255,255,0.08)",
+                borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%",
+              }}
             >
-              I like learning technologies{" "}
-              <br className="hidden sm:block" />
-              by{" "}
-              <span
+              {/* Glowing accent in the placeholder */}
+              <div 
+                className="absolute inset-0 opacity-30"
                 style={{
-                  background:
-                    "linear-gradient(120deg, #00d4ff 0%, #a855f7 100%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
+                  background: "radial-gradient(circle at center, #00d4ff 0%, transparent 70%)",
+                  filter: "blur(50px)"
                 }}
+              />
+              <span 
+                className="font-mono text-xs tracking-widest uppercase relative z-10 text-center px-4"
+                style={{ color: "#888899" }}
               >
-                building things
-              </span>{" "}
-              with them.
-            </p>
-
-            {/* Small sub-note */}
-            <p
-              className="mt-6 text-sm font-light leading-relaxed max-w-md"
-              style={{ color: "#555566" }}
-            >
-              Not just studying concepts &mdash; actually shipping them. That&apos;s
-              how I learn what works.
-            </p>
+                TECH IMAGE
+              </span>
+            </div>
           </div>
         </Reveal>
       </div>

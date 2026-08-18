@@ -21,7 +21,7 @@ function Reveal({
     const el = ref.current;
     if (!el) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setVisible(true);
+      setTimeout(() => setVisible(true), 0);
       return;
     }
     const observer = new IntersectionObserver(
@@ -175,13 +175,13 @@ function StatPill({
       onMouseLeave={() => setHover(false)}
     >
       <span
-        className="font-black font-mono text-2xl leading-none transition-colors duration-300"
+        className="font-black font-mono text-3xl leading-none transition-colors duration-300"
         style={{ color: hover ? "#00d4ff" : "#f0f0f0" }}
       >
         {value}
       </span>
       <span
-        className="font-mono text-[9px] tracking-[0.25em] uppercase transition-colors duration-300"
+        className="font-mono text-[11px] tracking-[0.25em] uppercase transition-colors duration-300"
         style={{ color: hover ? "#aaaacc" : "#555566" }}
       >
         {label}
@@ -223,7 +223,7 @@ export default function Education() {
         />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-24 md:py-32 lg:py-40">
+      <div className="relative z-10 w-full max-w-none px-6 md:px-12 lg:px-20 py-24 md:py-32 lg:py-40">
 
         {/* ======================================================== */}
         {/* HEADER ROW                                                */}
@@ -241,8 +241,8 @@ export default function Education() {
               style={{ background: "rgba(0,212,255,0.35)" }}
             />
             <span
-              className="font-mono text-[10px] font-bold tracking-[0.35em] uppercase"
-              style={{ color: "#888899" }}
+              className="font-serif text-3xl sm:text-4xl font-bold tracking-widest uppercase"
+              style={{ color: "#f0f0f0" }}
             >
               Education
             </span>
@@ -312,13 +312,13 @@ export default function Education() {
                 }}
               >
                 <p
-                  className="font-mono text-[10px] tracking-[0.25em] uppercase mb-2"
+                  className="font-mono text-[11px] tracking-[0.25em] uppercase mb-2"
                   style={{ color: "#555566" }}
                 >
                   Department
                 </p>
                 <p
-                  className="text-sm leading-relaxed font-semibold"
+                  className="text-base leading-relaxed font-semibold"
                   style={{ color: "#d4d4e0" }}
                 >
                   Internet of Things &amp; Cybersecurity
@@ -347,8 +347,8 @@ export default function Education() {
             <Reveal delay={240}>
               {/* Stat pills row */}
               <div className="flex flex-wrap gap-[1px]" style={{ background: "rgba(255,255,255,0.05)" }}>
-                <StatPill value="2022" label="Enrolled" />
-                <StatPill value="2026" label="Graduating" />
+                <StatPill value="2024" label="Enrolled" />
+                <StatPill value="2028" label="Graduating" />
                 <StatPill value="CSE" label="Stream" />
               </div>
             </Reveal>
@@ -359,71 +359,51 @@ export default function Education() {
           <div className="lg:col-span-7 flex flex-col gap-10">
 
             <Reveal delay={200}>
-              {/* GPA section header */}
-              <div className="flex items-center justify-between mb-1">
-                <span
-                  className="font-mono text-[10px] tracking-[0.3em] uppercase"
-                  style={{ color: "#555566" }}
-                >
-                  Academic Performance
-                </span>
-                <span
-                  className="font-mono text-[9px] tracking-[0.2em] uppercase"
-                  style={{ color: "#333344" }}
-                >
-                  Scale / 10
-                </span>
-              </div>
               <div
-                className="h-[1px] w-full mb-8"
-                style={{ background: "rgba(255,255,255,0.05)" }}
-              />
-
-              {/* Year bars */}
-              <div className="flex flex-col gap-7">
-                <GpaBar
-                  label="Year 1 — YGPA"
-                  gpa={9.39}
-                  delay={400}
-                  color="#00d4ff"
-                />
-                <GpaBar
-                  label="Year 2 — YGPA"
-                  gpa={9.64}
-                  delay={600}
-                  color="#a855f7"
-                />
-              </div>
-
-              {/* Trajectory note */}
-              <div
-                className="mt-8 flex items-center gap-3 px-4 py-3"
+                className="p-8 lg:p-10"
                 style={{
-                  border: "1px solid rgba(0,212,255,0.12)",
-                  background: "rgba(0,212,255,0.03)",
+                  background: "rgba(255,255,255,0.03)",
+                  border: "1px solid rgba(255,255,255,0.08)",
                 }}
               >
-                <svg
-                  className="w-3.5 h-3.5 shrink-0"
-                  style={{ color: "#00d4ff" }}
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.94"
+                {/* GPA section header */}
+                <div className="flex items-center justify-between mb-1">
+                  <span
+                    className="font-mono text-[11px] tracking-[0.3em] uppercase"
+                    style={{ color: "#555566" }}
+                  >
+                    Academic Performance
+                  </span>
+                  <span
+                    className="font-mono text-[10px] tracking-[0.2em] uppercase"
+                    style={{ color: "#333344" }}
+                  >
+                    Scale / 10
+                  </span>
+                </div>
+                <div
+                  className="h-[1px] w-full mb-8"
+                  style={{ background: "rgba(255,255,255,0.05)" }}
+                />
+
+                {/* Year bars */}
+                <div className="flex flex-col gap-9">
+                  <GpaBar
+                    label="Year 1 — YGPA"
+                    gpa={9.39}
+                    delay={400}
+                    color="#00d4ff"
                   />
-                </svg>
-                <span
-                  className="font-mono text-[10px] tracking-[0.2em] uppercase"
-                  style={{ color: "#888899" }}
-                >
-                  Upward trajectory — +0.25 YGPA growth
-                </span>
+                  <GpaBar
+                    label="Year 2 — YGPA"
+                    gpa={9.64}
+                    delay={600}
+                    color="#a855f7"
+                  />
+                </div>
               </div>
+
+
             </Reveal>
 
             <Reveal delay={500}>
@@ -502,16 +482,16 @@ function InfoCard({
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >
-      <span className="text-base leading-none">{icon}</span>
+      <span className="text-xl leading-none">{icon}</span>
       <p
-        className="text-xs font-bold tracking-wide uppercase transition-colors duration-300"
+        className="text-sm font-bold tracking-wide uppercase transition-colors duration-300 mt-1"
         style={{ color: hover ? "#00d4ff" : "#f0f0f0" }}
       >
         {title}
       </p>
       <p
-        className="text-[12px] leading-relaxed transition-colors duration-300"
-        style={{ color: "#666677" }}
+        className="text-[14px] leading-relaxed transition-colors duration-300"
+        style={{ color: "#888899" }}
       >
         {desc}
       </p>
