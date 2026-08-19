@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import dynamic from "next/dynamic";
 
@@ -126,7 +126,7 @@ function LiveButton({href,color,colorRgb}:{href:string;color:string;colorRgb:str
   return(
     <a href={href} target="_blank" rel="noopener noreferrer"
       onMouseEnter={()=>setHov(true)} onMouseLeave={()=>setHov(false)}
-      className="inline-flex items-center gap-2.5 px-5 py-3 font-mono text-[11px] font-bold tracking-[0.18em] uppercase"
+      className="inline-flex items-center gap-3 px-6 py-3.5 font-mono text-xs font-bold tracking-[0.2em] uppercase"
       style={{
         background:hov?color:`rgba(${colorRgb},0.12)`,
         color:hov?"#080808":color,
@@ -147,7 +147,7 @@ function GitHubButton({href,color,colorRgb}:{href:string;color:string;colorRgb:s
   return(
     <a href={href} target="_blank" rel="noopener noreferrer"
       onMouseEnter={()=>setHov(true)} onMouseLeave={()=>setHov(false)}
-      className="inline-flex items-center gap-2.5 px-5 py-3 font-mono text-[11px] font-bold tracking-[0.18em] uppercase"
+      className="inline-flex items-center gap-3 px-6 py-3.5 font-mono text-xs font-bold tracking-[0.2em] uppercase"
       style={{
         background:"transparent",
         color:hov?"#f0f0f0":"#888899",
@@ -184,7 +184,7 @@ function ProjectPanel({project,animKey}:{project:Project;animKey:number}){
     }}>
       {/* ---- Content ---- */}
       <div className="flex flex-col justify-center gap-5 p-8 lg:p-10 xl:p-12 overflow-y-auto"
-        style={{flex:"0 0 auto",width:"100%",maxWidth:520,scrollbarWidth:"none"}}>
+        style={{flex:"0 0 auto",width:"100%",maxWidth:600,scrollbarWidth:"none"}}>
         {/* Badge */}
         <div className="flex items-center gap-3 flex-wrap">
           <span className="font-mono text-[10px] font-bold tracking-[0.32em] uppercase" style={{color}}>

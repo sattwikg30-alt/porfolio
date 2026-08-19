@@ -4,11 +4,12 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 
 const navItems = [
-  { name: "ABOUT", href: "#about" },
-  { name: "EDUCATION", href: "#education" },
-  { name: "SKILLS", href: "#skills" },
-  { name: "EXPERIENCE", href: "#experience" },
-  { name: "PROJECTS", href: "#projects" },
+  { name: "ABOUT", href: "#about", isExternal: false },
+  { name: "EDUCATION", href: "#education", isExternal: false },
+  { name: "SKILLS", href: "#skills", isExternal: false },
+  { name: "EXPERIENCE", href: "#experience", isExternal: false },
+  { name: "PROJECTS", href: "#projects", isExternal: false },
+  { name: "GITHUB", href: "https://github.com/sattwikg30-alt", isExternal: true },
 ];
 
 export default function Navbar() {
@@ -59,17 +60,29 @@ export default function Navbar() {
 
         {/* DESKTOP NAVIGATION */}
         <nav className="hidden md:flex items-center gap-8">
-          {navItems.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className="relative text-xs font-semibold tracking-widest text-[#a1a1aa] hover:text-foreground transition-colors duration-300 ease-out py-1 group"
-            >
-              {item.name}
-              {/* Subtle Red Underline Slide Hover */}
-              <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-accent transition-all duration-300 ease-out group-hover:w-full" />
-            </Link>
-          ))}
+          {navItems.map((item) => 
+            item.isExternal ? (
+              <a
+                key={item.name}
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative text-xs font-semibold tracking-widest text-[#a1a1aa] hover:text-foreground transition-colors duration-300 ease-out py-1 group"
+              >
+                {item.name}
+                <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-accent transition-all duration-300 ease-out group-hover:w-full" />
+              </a>
+            ) : (
+              <Link
+                key={item.name}
+                href={item.href}
+                className="relative text-xs font-semibold tracking-widest text-[#a1a1aa] hover:text-foreground transition-colors duration-300 ease-out py-1 group"
+              >
+                {item.name}
+                <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-accent transition-all duration-300 ease-out group-hover:w-full" />
+              </Link>
+            )
+          )}
           <Link
             href="#contact"
             className="text-xs font-semibold tracking-widest text-foreground border border-white/10 hover:border-accent hover:bg-accent px-5 py-2.5 rounded-full transition-all duration-300 ease-out"
@@ -125,20 +138,37 @@ export default function Navbar() {
         }`}
       >
         <div className="flex flex-col gap-8 text-left mt-8">
-          {navItems.map((item, idx) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="relative text-3xl font-bold tracking-widest text-[#a1a1aa] hover:text-accent transition-all duration-300 w-fit group"
-              style={{
-                transitionDelay: isMobileMenuOpen ? `${idx * 75}ms` : "0ms",
-              }}
-            >
-              {item.name}
-              <span className="absolute bottom-[-6px] left-0 w-0 h-[2.5px] bg-accent transition-all duration-300 ease-out group-hover:w-full" />
-            </Link>
-          ))}
+          {navItems.map((item, idx) => 
+            item.isExternal ? (
+              <a
+                key={item.name}
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="relative text-3xl font-bold tracking-widest text-[#a1a1aa] hover:text-accent transition-all duration-300 w-fit group"
+                style={{
+                  transitionDelay: isMobileMenuOpen ? `${idx * 75}ms` : "0ms",
+                }}
+              >
+                {item.name}
+                <span className="absolute bottom-[-6px] left-0 w-0 h-[2.5px] bg-accent transition-all duration-300 ease-out group-hover:w-full" />
+              </a>
+            ) : (
+              <Link
+                key={item.name}
+                href={item.href}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="relative text-3xl font-bold tracking-widest text-[#a1a1aa] hover:text-accent transition-all duration-300 w-fit group"
+                style={{
+                  transitionDelay: isMobileMenuOpen ? `${idx * 75}ms` : "0ms",
+                }}
+              >
+                {item.name}
+                <span className="absolute bottom-[-6px] left-0 w-0 h-[2.5px] bg-accent transition-all duration-300 ease-out group-hover:w-full" />
+              </Link>
+            )
+          )}
           <Link
             href="#contact"
             onClick={() => setIsMobileMenuOpen(false)}

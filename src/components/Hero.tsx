@@ -283,6 +283,33 @@ export default function Hero() {
               GET IN TOUCH
               <span className="inline-block transition-transform duration-300 group-hover/btn:translate-x-1.5">→</span>
             </Link>
+
+            {/* Resume — violet ghost */}
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group/btn px-8 py-4 text-[11px] font-bold tracking-widest uppercase transition-all duration-300 ease-out flex items-center gap-2"
+              style={{
+                border: "1px solid rgba(168,85,247,0.3)",
+                color: "#f0f0f0",
+              }}
+              onMouseEnter={(e) => {
+                const el = e.currentTarget as HTMLAnchorElement;
+                el.style.borderColor = "#a855f7";
+                el.style.background = "rgba(168,85,247,0.07)";
+                el.style.color = "#a855f7";
+              }}
+              onMouseLeave={(e) => {
+                const el = e.currentTarget as HTMLAnchorElement;
+                el.style.borderColor = "rgba(168,85,247,0.3)";
+                el.style.background = "";
+                el.style.color = "#f0f0f0";
+              }}
+            >
+              RESUME
+              <span className="inline-block transition-transform duration-300 group-hover/btn:translate-y-[-2px] group-hover/btn:translate-x-[2px]">↗</span>
+            </a>
           </div>
 
           {/* Status */}
@@ -361,7 +388,6 @@ export default function Hero() {
             }}
           >
             {[
-              { val: "2026", sub1: "GRADUATION", sub2: "YEAR" },
               { val: "CSE",  sub1: "COMPUTER SCIENCE", sub2: "STUDENT" },
               { val: "WEB3", sub1: "DECENTRALIZED",   sub2: "BUILDER" },
               { val: "HACK", sub1: "HACKATHON",        sub2: "BUILDER" },
@@ -371,7 +397,7 @@ export default function Hero() {
                 className="flex items-center gap-4 pb-2.5"
                 style={{
                   borderBottom:
-                    i < 3 ? "1px solid rgba(255,255,255,0.05)" : "none",
+                    i < 2 ? "1px solid rgba(255,255,255,0.05)" : "none",
                 }}
               >
                 <span

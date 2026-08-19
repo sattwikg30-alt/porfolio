@@ -63,7 +63,7 @@ export default function Portrait({ style }: PortraitProps) {
       >
         {/* Portrait image */}
         <img
-          src="https://res.cloudinary.com/dzjn1u0ln/image/upload/v1787080294/WhatsApp_Image_2026-08-10_at_8.46.10_PM_gtdl93.jpg"
+          src="https://res.cloudinary.com/dzjn1u0ln/image/upload/v1787104281/WhatsApp_Image_2026-08-19_at_7.18.54_AM_1_snfm9h.jpg"
           alt="Sattwik Ghosh"
           className="absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-[1.04]"
         />
@@ -126,10 +126,6 @@ export default function Portrait({ style }: PortraitProps) {
 
         {/* Bottom name plate */}
         <div className="absolute inset-x-0 bottom-10 flex flex-col items-center gap-1.5 z-10 select-none">
-          <span className="text-[8px] font-mono tracking-[0.4em] font-bold uppercase"
-            style={{ color: "#00d4ff" }}>
-            SYS.PRTRT_2026
-          </span>
           <span className="text-xs font-black tracking-[0.25em] text-white group-hover:text-[#00d4ff] transition-colors duration-300">
             SATTWIK GHOSH
           </span>

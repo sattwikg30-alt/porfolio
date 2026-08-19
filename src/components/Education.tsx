@@ -97,19 +97,22 @@ function GpaBar({
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >
-      <div className="flex items-baseline justify-between mb-2">
+      <div className="flex items-baseline justify-between mb-3.5">
         <span
-          className="font-mono text-[10px] tracking-[0.25em] uppercase transition-colors duration-300"
-          style={{ color: hover ? "#f0f0f0" : "#888899" }}
+          className="font-mono text-lg md:text-xl font-bold tracking-[0.2em] uppercase transition-colors duration-300"
+          style={{ color: hover ? "#ffffff" : "#d4d4e0" }}
         >
           {label}
         </span>
         <span
-          className="font-black font-mono text-xl transition-all duration-300"
-          style={{ color: hover ? color : "#f0f0f0" }}
+          className="font-black font-mono text-3xl md:text-4xl transition-all duration-300"
+          style={{ 
+            color: color,
+            textShadow: `0 0 15px rgba(${color === "#00d4ff" ? "0,212,255" : "168,85,247"}, 0.35)`
+          }}
         >
           {gpa.toFixed(2)}
-          <span className="text-[11px] font-normal ml-1" style={{ color: "#555566" }}>
+          <span className="text-[12px] md:text-[14px] font-normal ml-1.5" style={{ color: "#666677" }}>
             / {max}
           </span>
         </span>
@@ -117,7 +120,7 @@ function GpaBar({
 
       {/* Bar track */}
       <div
-        className="relative h-[3px] rounded-full overflow-hidden"
+        className="relative h-[5px] rounded-full overflow-hidden"
         style={{ background: "rgba(255,255,255,0.06)" }}
       >
         {/* Filled portion */}
@@ -130,18 +133,18 @@ function GpaBar({
             })`,
             transition: "width 1.2s cubic-bezier(0.16,1,0.3,1)",
             boxShadow: filled
-              ? `0 0 8px 1px ${color}60`
+              ? `0 0 12px 2px ${color}65`
               : "none",
           }}
         />
         {/* Glowing dot at tip */}
         <div
-          className="absolute top-1/2 -translate-y-1/2 w-2 h-2 rounded-full transition-all duration-300"
+          className="absolute top-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full transition-all duration-300"
           style={{
-            left: filled ? `calc(${pct}% - 4px)` : "0%",
+            left: filled ? `calc(${pct}% - 7px)` : "0%",
             background: color,
             boxShadow: filled
-              ? `0 0 10px 3px ${color}80`
+              ? `0 0 12px 4px ${color}90`
               : "none",
             opacity: filled ? 1 : 0,
             transition:

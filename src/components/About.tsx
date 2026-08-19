@@ -520,29 +520,29 @@ export default function About() {
               </p>
             </div>
 
-            {/* Image Placeholder */}
+            {/* Rectangular Image */}
             <div 
-              className="relative w-[280px] h-[280px] sm:w-[340px] sm:h-[340px] shrink-0 flex items-center justify-center overflow-hidden"
+              className="relative w-[280px] h-[280px] sm:w-[340px] sm:h-[340px] shrink-0 overflow-hidden group/img transition-all duration-500 ease-out"
               style={{
-                background: "rgba(255,255,255,0.03)",
+                background: "rgba(255,255,255,0.02)",
                 border: "1px solid rgba(255,255,255,0.08)",
-                borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%",
+                borderRadius: "16px",
+                boxShadow: "0 10px 30px -15px rgba(0,212,255,0.15)",
               }}
             >
-              {/* Glowing accent in the placeholder */}
+              {/* Glowing background accent */}
               <div 
-                className="absolute inset-0 opacity-30"
+                className="absolute inset-0 opacity-20 transition-opacity duration-500 group-hover/img:opacity-30"
                 style={{
                   background: "radial-gradient(circle at center, #00d4ff 0%, transparent 70%)",
-                  filter: "blur(50px)"
+                  filter: "blur(40px)"
                 }}
               />
-              <span 
-                className="font-mono text-xs tracking-widest uppercase relative z-10 text-center px-4"
-                style={{ color: "#888899" }}
-              >
-                TECH IMAGE
-              </span>
+              <img
+                src="https://res.cloudinary.com/dzjn1u0ln/image/upload/v1787105193/WhatsApp_Image_2026-08-19_at_7.35.07_AM_1_epwyqp.jpg"
+                alt="Sattwik Ghosh Tech Portrait"
+                className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover/img:scale-[1.04]"
+              />
             </div>
           </div>
         </Reveal>
